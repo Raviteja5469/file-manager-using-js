@@ -2,11 +2,12 @@ import fs from "fs/promises"
 import fsn from "fs"
 import path from 'path'
 
-// console.log(fs)
 
-let files = await fs.readdir("C:\\Users\\oyjaa\\clutter project")
+//give your file location (ie. path)
+const file_address="C:\\Users\\oyjaa\\clutter project"
 
-// console.log(files)
+let files = await fs.readdir(file_address)
+
 
 
 for (const item of files) {
@@ -16,13 +17,13 @@ for (const item of files) {
 
     if (diff != "js" && diff != "json" && item.split(".").length > 1) {
 
-        if (fsn.existsSync(path.join("C:\\Users\\oyjaa\\clutter project", diff))) {
+        if (fsn.existsSync(path.join(file_address, diff))) {
             //moving file to the directory
-            fs.rename(path.join("C:\\Users\\oyjaa\\clutter project", item), path.join("C:\\Users\\oyjaa\\clutter project", diff, item))
+            fs.rename(path.join(file_address, item), path.join(file_address diff, item))
         
         } else {
             fs.mkdir(diff)
-            fs.rename(path.join("C:\\Users\\oyjaa\\clutter project", item), path.join("C:\\Users\\oyjaa\\clutter project", diff, item))
+            fs.rename(path.join(file_address, item), path.join(file_address, diff, item))
 
         }
     }
@@ -30,11 +31,3 @@ for (const item of files) {
 }
 
 
-
-
-
-
-
-const r = "ravu.teja";
-let dif = r.split(".");
-console.log(dif)
